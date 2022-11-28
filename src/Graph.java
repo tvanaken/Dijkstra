@@ -14,6 +14,30 @@ public class Graph {
 		
 	}
 	
+	/*
+	INITIALIZE-SINGLE-SOURCE(G, s) // graph G with source vertex s
+		for each vertex v of G // all vertices including s
+	   		v.d = infinity // infinity
+	   		v.p = NULL
+		s.d = 0 // this is outside the loop. We “fix” s.d to be 0, not infinity
+
+	*/
+	private void initializeSingleSource(Node source) {
+		//do stuff to each vertex of the graph
+	}
+	
+	private void relax(Node u, Node v) {
+		//our weight function is in our Edge! Oh no!
+		if(u.d == Integer.MAX_VALUE) {
+			return;
+		}
+		Edge edge = v.getBackEdge(u);
+		
+		if (v.d > (u.d + edge.getWeight())) {
+			v.d = u.d + edge.getWeight();
+			v.p = u;
+		}
+	}
 	
 	// TODO: Implement
 	public void printDirections(Node source, Node destination, boolean isRushHour) {
