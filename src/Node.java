@@ -2,7 +2,7 @@ import java.util.LinkedList;
 
 import org.json.simple.JSONObject;
 
-public class Node {
+public class Node implements Comparable<Node> {
 	public Integer id;
 	public String name;
 	public Node p;
@@ -14,13 +14,19 @@ public class Node {
 		this.name = name;
 	}
 	
-	// TODO: Implement
 	public void addEdge(Edge edge) {
 		
+		this.outboundEdges.add(edge);
 	}
 	
 	// TODO: Implement
 	public Edge getBackEdge(Node node) {
+		
+		for(Edge edge : this.outboundEdges) {
+			if (edge.target.compareTo(node) == 0) {
+				return edge;
+			}
+		}
 		return null;
 	}
 	
@@ -42,6 +48,17 @@ public class Node {
 		edgeString += this.name + "\t";
 		edgeString += (this.p != null) ? this.p.name : '*';
 		return edgeString;
+	}
+	
+	public int compareTo(Node other) {
+
+		if (this.d < other.d) {
+			return -1;
+		} else if (this.d > other.d) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }

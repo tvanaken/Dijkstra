@@ -36,9 +36,9 @@ public class Edge {
 	public Float getWeight() {
 		
 		if(this.isRushHour) {
-			return (float) ((this.length * this.congestionFactor) / (this.speedLimit * this.numLanes) / 10.0);
+			return (float) ((this.length * this.congestionFactor) / (this.speedLimit * this.numLanes * 10.0));
 		} else { 
-			return (float) (this.length / (this.speedLimit * this.numLanes) / 10.0);
+			return (float) (this.length / (this.speedLimit * this.numLanes * 10.0));
 		}
 	}
 	
